@@ -15,7 +15,7 @@
         @endif
     </title>
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
     <!-- Styles -->
     @stack('before-css')
@@ -24,7 +24,11 @@
 </head>
 <body class="bg-gray-100 antialiased leading-none">
 <div id="app">
+    @include('partials.nav')
+
     @yield('master-content')
+
+    @include('partials.footer')
 </div>
 
 <!-- Scripts -->

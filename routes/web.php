@@ -27,18 +27,21 @@ Route::get('/donate', function() {
             'title' => 'Become a member',
             'description' => "Your monthly donation helps us to protect, save and restore our country’s most important places as well as influence how you sustainably benefit from nature's resources. Be a change maker. #TogetherforNature",
             'button_text' => 'Sign up',
+            'button_url' => '#'
         ],
         [
             'image_url' => 'https://d3qzf9rpau633b.cloudfront.net/img/large_ww22455_490648.jpg',
             'title' => 'Adopt',
             'description' => 'Become a WWF adopter for just Ksh. 500 per month. Your symbolic adoption supports WWF-Kenya\'s work towards protecting Kenya’s endangered species ( Lions, Elephants, Rhinos and Turtles). Take action NOW!',
             'button_text' => 'Show your support',
+            'button_url' => '#'
         ],
         [
             'image_url' => 'https://d3qzf9rpau633b.cloudfront.net/img/unnamed__40__486319.jpg',
             'title' => 'Shop for nature',
             'description' => 'Gift nature by Shopping with us. You are just a click away from showing your love for nature and supporting our conservation goals. Get the latest WWF-Kenya branded merchandise. #TogetherForNature',
             'button_text' => 'Shop',
+            'button_url' => 'http://wwf-shop.test'
         ]
     ];
     return view('donate', compact(['options']));

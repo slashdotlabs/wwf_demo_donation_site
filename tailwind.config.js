@@ -1,13 +1,18 @@
 module.exports = {
-  theme: {
-    extend: {
-        spacing: {
-            '26': '6.5rem'
+    theme: {
+        extend: {
+            spacing: {
+                '24': '6rem',
+                '26': '6.5rem'
+            },
+            colors: {
+                'footer-gray': '#393939',
+            }
+
         }
-    }
-  },
-  variants: {},
-  plugins: [
-    require('@tailwindcss/custom-forms')
-  ]
+    },
+    variants: {},
+    plugins: [
+        require('@tailwindcss/ui'),
+    ]
 };
