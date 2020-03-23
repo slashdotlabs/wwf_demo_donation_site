@@ -1,55 +1,20 @@
 <?php
 
+use App\Billing\IpayGateway;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/donate', function() {
-    $options = [
-        [
-            'image_url' => 'https://d3qzf9rpau633b.cloudfront.net/img/dsc_9271_489430.jpg',
-            'title' => 'Become a member',
-            'description' => "Your monthly donation helps us to protect, save and restore our country’s most important places as well as influence how you sustainably benefit from nature's resources. Be a change maker. #TogetherforNature",
-            'button_text' => 'Sign up',
-            'button_url' => '#'
-        ],
-        [
-            'image_url' => 'https://d3qzf9rpau633b.cloudfront.net/img/large_ww22455_490648.jpg',
-            'title' => 'Adopt',
-            'description' => 'Become a WWF adopter for just Ksh. 500 per month. Your symbolic adoption supports WWF-Kenya\'s work towards protecting Kenya’s endangered species ( Lions, Elephants, Rhinos and Turtles). Take action NOW!',
-            'button_text' => 'Show your support',
-            'button_url' => '#'
-        ],
-        [
-            'image_url' => 'https://d3qzf9rpau633b.cloudfront.net/img/unnamed__40__486319.jpg',
-            'title' => 'Shop for nature',
-            'description' => 'Gift nature by Shopping with us. You are just a click away from showing your love for nature and supporting our conservation goals. Get the latest WWF-Kenya branded merchandise. #TogetherForNature',
-            'button_text' => 'Shop',
-            'button_url' => 'http://wwf-shop.test'
-        ]
-    ];
-    return view('donate', compact(['options']));
-})->name('donate');
 
-Route::get('ipay_test', function(\App\Billing\IpayGateway $ipayGateway) {
+Route::get('/', 'UserSubscriptionController@create')->name('subscription.create');
+Route::post('/subscriptions/store', 'UserSubscriptionController@store')->name('subscription.store');
+
+
+Route::get('ipay_test', function (IpayGateway $ipayGateway) {
     $params = [
-        'order_id' => "wwftest-".now()->timestamp,
+        'order_id' => "wwftest-" . now()->timestamp,
         'phone_number' => '0725127193',
         'email' => 'waynewanyee@gmail.com',
         'amount' => '1'

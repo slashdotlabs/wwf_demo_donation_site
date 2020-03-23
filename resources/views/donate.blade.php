@@ -32,31 +32,31 @@
                 </div>
                 <div class="px-12 py-8 col-span-2">
                     <h2 class="text-gray-800 font-semibold text-2xl mb-5 capitalize">Panda made me do it</h2>
-                    <form action="#" method="post">
+                    <form action="{{ route('subscription.store') }}" method="post">
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div>
-                                <x-inputs.input-with-label name="first_name" labelText="First Name" placeholder="James" required />
+                                <x-inputs.input-with-label name="first_name" labelText="First Name" placeholder="James" required/>
                             </div>
                             <div>
-                                <x-inputs.input-with-label name="last_name" labelText="Last Name" placeholder="Maina" required />
+                                <x-inputs.input-with-label name="last_name" labelText="Last Name" placeholder="Maina" required/>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div>
-                                <x-inputs.input-with-label name="email" labelText="Email" placeholder="e.g. james@example.org" required />
+                                <x-inputs.input-with-label name="email" labelText="Email" placeholder="e.g. james@example.org" required/>
                             </div>
                             <div>
-                                <x-inputs.input-with-label name="phone_number" labelText="Phone Number" placeholder="e.g. 25472312890" required />
+                                <x-inputs.input-with-label name="phone_number" labelText="Phone Number" placeholder="e.g. 25472312890" required/>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div>
-                                <x-inputs.input-with-label name="city" labelText="City" placeholder="e.g. Nairobi" required />
+                                <x-inputs.input-with-label name="city" labelText="City" placeholder="e.g. Nairobi" required/>
                             </div>
                             <div>
-                                <x-inputs.input-with-label name="country" labelText="Country" placeholder="e.g. Kenya" required />
+                                <x-inputs.input-with-label name="country" labelText="Country" placeholder="e.g. Kenya" required/>
                             </div>
                         </div>
 

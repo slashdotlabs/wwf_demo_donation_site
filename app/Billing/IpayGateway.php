@@ -6,13 +6,12 @@ namespace App\Billing;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class IpayGateway
 {
-    protected $api_base_url = "https://apis.ipayafrica.com";
-    protected $vendor_id = "demo";
-    protected $hashkey = "demoCHANGED";
+    protected string $api_base_url = "https://apis.ipayafrica.com";
+    protected string $vendor_id = "demo";
+    protected string $hashkey = "demoCHANGED";
 
     public function charge($meta_data)
     {

@@ -18,9 +18,9 @@ class CreateUserSubscriptionsTable extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->enum('subscription_type', ['adoption', 'membership']);
+            $table->string('subscription_type');
             $table->double('amount');
-            $table->enum('cycle', ['monthly', 'quarterly', 'annually']);
+            $table->string('cycle');
             $table->softDeletes();
             $table->timestamps();
         });
