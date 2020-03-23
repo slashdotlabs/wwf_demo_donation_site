@@ -50,6 +50,6 @@ class UserSubscriptionController extends Controller
 
         event(new DonorSubscribed($donor));
 
-        return redirect()->route('payment.create');
+        return response()->redirectToRoute('payment.create')->with('donor', $donor);
     }
 }

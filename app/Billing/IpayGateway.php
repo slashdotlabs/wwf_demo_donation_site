@@ -12,12 +12,13 @@ class IpayGateway
     protected string $api_base_url = "https://apis.ipayafrica.com";
     protected string $vendor_id = "demo";
     protected string $hashkey = "demoCHANGED";
+    protected int $live = 0;
 
     public function charge($meta_data)
     {
         $ipay_base_url = "https://payments.ipayafrica.com/v3/ke";
         $fields = collect([
-            "live" => 0,
+            "live" => $this->live,
             "oid" => $meta_data['order_id'],
             "inv" => null,
             "ttl" => $meta_data['amount'],

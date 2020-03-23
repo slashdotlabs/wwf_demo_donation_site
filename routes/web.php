@@ -21,9 +21,6 @@ Route::get('ipay_test', function (IpayGateway $ipayGateway) {
         'amount' => '1'
     ];
 
-//     Test first payment
-    return $ipayGateway->charge($params);
-
     $initiator_res = $ipayGateway->rest_initiate_request($params);
 
     if ($initiator_res->status() !== 200) {

@@ -27,8 +27,6 @@ class DonationSubscriptionTest extends TestCase
      */
     public function donor_can_subsribe_to_a_subscription(string $subscriptionType)
     {
-        // TODO: mock ipay response, check payment callback, check email sent for account creation
-
         $this->withoutExceptionHandling();
 
         $user = factory(User::class)->state('donor')->make()->toArray();
@@ -42,7 +40,9 @@ class DonationSubscriptionTest extends TestCase
         Mail::fake();
 
         $this->post('/subscriptions/store', $attributes)
-            ->assertRedirect(route('payment.create'));
+            ->assertRedirect(route('payment.create'))
+            ->assertSessionHas('donor');
+
 
         $this->assertDatabaseHas('users', collect($user)->except('email_verified_at')->toArray());
         $this->assertDatabaseHas('donor_details', $donor_details);
