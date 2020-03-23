@@ -26,7 +26,7 @@ class SubcribeDonorRequestTest extends TestCase
             'user' => ['required', 'array'],
             'user.first_name' => 'required',
             'user.last_name' => 'required',
-            'user.email' => ['required', 'unique:users,email', 'email:rfc,dns'],
+            'user.email' => ['required', 'unique:users,email', 'email:rfc'],
             'user.user_type' => ['required', 'in:donor'],
 
             'donor_details' => ['required', 'array'],

@@ -4,6 +4,7 @@
 
 @section('master-content')
     <main class="pb-10">
+        @if(false)
         <section class="container px-2 md:px-8 mx-auto">
             <h1 class="mt-20 mb-5 text-3xl text-gray-800 tracking-tight font-bold uppercase text-center">More ways to give</h1>
 
@@ -24,6 +25,7 @@
                 @endforeach
             </div>
         </section>
+        @endif
 
         <section class="mt-10 container mx-auto px-2 md:px-8 ">
             <div class="bg-white grid grid-cols-3 shadow">
@@ -33,36 +35,38 @@
                 <div class="px-12 py-8 col-span-2">
                     <h2 class="text-gray-800 font-semibold text-2xl mb-5 capitalize">Panda made me do it</h2>
                     <form action="{{ route('subscription.store') }}" method="post">
-                        <div class="grid grid-cols-2 gap-6 mb-8">
+                        @csrf
+                        <div class="grid grid-cols-2 gap-6 mb-6">
+                            <input type="hidden" name="user[user_type]" value="donor">
                             <div>
-                                <x-inputs.input-with-label name="first_name" labelText="First Name" placeholder="James" required/>
+                                <x-inputs.input-with-label name="user[first_name]" labelText="First Name" placeholder="James" />
                             </div>
                             <div>
-                                <x-inputs.input-with-label name="last_name" labelText="Last Name" placeholder="Maina" required/>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-6 mb-8">
-                            <div>
-                                <x-inputs.input-with-label name="email" labelText="Email" placeholder="e.g. james@example.org" required/>
-                            </div>
-                            <div>
-                                <x-inputs.input-with-label name="phone_number" labelText="Phone Number" placeholder="e.g. 25472312890" required/>
+                                <x-inputs.input-with-label name="user[last_name]" labelText="Last Name" placeholder="Maina" required/>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="grid grid-cols-2 gap-6 mb-6">
                             <div>
-                                <x-inputs.input-with-label name="city" labelText="City" placeholder="e.g. Nairobi" required/>
+                                <x-inputs.input-with-label name="user[email]" labelText="Email" placeholder="e.g. james@example.org" required/>
                             </div>
                             <div>
-                                <x-inputs.input-with-label name="country" labelText="Country" placeholder="e.g. Kenya" required/>
+                                <x-inputs.input-with-label name="donor_details[phone_number]" labelText="Phone Number" placeholder="e.g. 25472312890" required/>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="grid grid-cols-2 gap-6 mb-6">
                             <div>
-                                <x-inputs.input-with-label name="postal_code" labelText="Postal Code" placeholder="e.g. 00101" required />
+                                <x-inputs.input-with-label name="donor_details[city]" labelText="City" placeholder="e.g. Nairobi" required/>
+                            </div>
+                            <div>
+                                <x-inputs.input-with-label name="donor_details[country]" labelText="Country" placeholder="e.g. Kenya" required/>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <x-inputs.input-with-label name="donor_details[postal_code]" labelText="Postal Code" placeholder="e.g. 00101" required />
                             </div>
 
                             <div>
@@ -73,9 +77,10 @@
                                         KES
                                       </span>
                                     </div>
-                                    <input id="amount" class="form-input block w-full pl-11 pr-12 sm:text-sm sm:leading-5" placeholder="0.00"/>
+                                    <input type="hidden" name="subscription[subscription_type]" value="membership">
+                                    <input id="amount" name="subscription[amount]" value="{{ old('subscription.amount') }}" class="form-input block w-full pl-11 pr-12 sm:text-sm sm:leading-5" placeholder="0.00"/>
                                     <div class="absolute inset-y-0 right-0 flex items-center">
-                                        <select name="payment_cycle" aria-label="Payment Cycle" class="form-select h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm sm:leading-5">
+                                        <select name="subscription[cycle]" aria-label="Payment Cycle" class="form-select h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm sm:leading-5">
                                             <option value="monthly">Monthly</option>
                                             <option value="quarterly">Quarterly</option>
                                             <option value="annually">Annually</option>
