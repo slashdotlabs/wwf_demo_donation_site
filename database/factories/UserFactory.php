@@ -20,7 +20,9 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->state(User::class, 'donor', ['user_type' => UserTypeEnum::donor()]);
+$factory->state(User::class, 'donor', [
+    'user_type' => UserTypeEnum::donor()
+]);
 
 $factory->afterCreatingState(User::class, 'donor', function ($user, $faker) {
     $user->donor_details()->save(\factory(DonorDetail::class)->make());

@@ -11,6 +11,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'UserSubscriptionController@create')->name('subscription.create');
 Route::post('/subscriptions/store', 'UserSubscriptionController@store')->name('subscription.store');
 
+Route::get('/payments/create', 'PaymentController@create')->name('payment.create');
 
 Route::get('ipay_test', function (IpayGateway $ipayGateway) {
     $params = [

@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\BillingCycleEnum;
+use App\Enums\SubscriptionTypeEnum;
+use App\Enums\UserTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Spatie\Enum\Laravel\Rules\EnumRule;
 
 class SubscribeDonorRequest extends FormRequest
 {
@@ -28,7 +32,7 @@ class SubscribeDonorRequest extends FormRequest
             'user.first_name' => 'required',
             'user.last_name' => 'required',
             'user.email' => ['required', 'unique:users,email', 'email:rfc'],
-            'user.user_type' => ['required', 'in:donor'],
+            'user.user_type' => ['required', new EnumRule(UserTypeEnum::class)],
 
             'donor_details' => ['required', 'array'],
             'donor_details.phone_number' => 'required',
@@ -37,9 +41,9 @@ class SubscribeDonorRequest extends FormRequest
             'donor_details.postal_code' => 'required',
 
             'subscription' => ['required', 'array'],
-            'subscription.subscription_type' => ['required', 'in:adoption,membership'],
+            'subscription.subscription_type' => ['required', new EnumRule(SubscriptionTypeEnum::class)],
             'subscription.amount' => ['required', 'integer'],
-            'subscription.cycle' => ['required', 'in:monthly,quarterly,yearly']
+            'subscription.cycle' => ['required', new EnumRule(BillingCycleEnum::class)]
         ];
     }
 
@@ -50,17 +54,6 @@ class SubscribeDonorRequest extends FormRequest
             'user.last_name' => 'last name',
             'user.email' => 'email',
             'user.user_type' => 'user type',
-
-//            'donor_details' => ['required', 'array'],
-//            'donor_details.phone_number' => 'required',
-//            'donor_details.city' => 'required',
-//            'donor_details.country' => 'required',
-//            'donor_details.postal_code' => 'required',
-//
-//            'subscription' => ['required', 'array'],
-//            'subscription.subscription_type' => ['required', 'in:adoption,membership'],
-//            'subscription.amount' => ['required', 'integer'],
-//            'subscription.cycle' => ['required', 'in:monthly,quarterly,yearly']
         ];
     }
 

@@ -50,6 +50,6 @@ class UserSubscriptionController extends Controller
 
         event(new DonorSubscribed($donor));
 
-        // redirect to ipay payment page
+        return redirect()->route('payment.create');
     }
 }
