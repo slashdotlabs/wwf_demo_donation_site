@@ -4,7 +4,7 @@
 
 @section('master-content')
     <main class="pb-10">
-        @if(false)
+        @if(true)
         <section class="container px-2 md:px-8 mx-auto">
             <h1 class="mt-20 mb-5 text-3xl text-gray-800 tracking-tight font-bold uppercase text-center">More ways to give</h1>
 

@@ -15,7 +15,7 @@ class CreateBillingTransactionsTable extends Migration
     {
         Schema::create('billing_transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('sid');
+            $table->string('sid')->nullable();
             $table->string('account')->nullable();
             $table->string('order_id');
             $table->foreignId('user_subscription_id')

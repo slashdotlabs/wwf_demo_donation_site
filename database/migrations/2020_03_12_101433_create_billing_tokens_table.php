@@ -18,8 +18,9 @@ class CreateBillingTokensTable extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->string('token_id');
-            $table->string('token_email');
+            $table->string('tokenid');
+            $table->string('tokenemail');
+            $table->string('card_mask');
             $table->softDeletes();
             $table->timestamps();
         });

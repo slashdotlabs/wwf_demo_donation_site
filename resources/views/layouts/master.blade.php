@@ -21,10 +21,14 @@
     @stack('before-css')
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @stack('after-css')
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2/dist/alpine.js" defer></script>
 </head>
 <body class="bg-gray-100 antialiased leading-none">
 <div id="app">
     @include('partials.nav')
+
+    @include("partials.popup-notifications")
 
     @yield('master-content')
 

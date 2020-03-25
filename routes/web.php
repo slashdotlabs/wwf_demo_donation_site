@@ -12,6 +12,10 @@ Route::get('/', 'UserSubscriptionController@create')->name('subscription.create'
 Route::post('/subscriptions/store', 'UserSubscriptionController@store')->name('subscription.store');
 
 Route::get('/payments/create', 'PaymentController@create')->name('payment.create');
+Route::get('payment/process', 'PaymentController@store')->name('payment.store');
+
+
+
 
 Route::get('ipay_test', function (IpayGateway $ipayGateway) {
     $params = [
@@ -45,9 +49,4 @@ Route::get('ipay_test', function (IpayGateway $ipayGateway) {
     ];
     $recurring_res  = $ipayGateway->recurring_billing($recurring_params);
     dd($recurring_res->json());
-});
-
-Route::get('payment/process', function () {
-   Log::channel('ipay')->debug('Sent from C2B callback', request()->all());
-   dd(request()->all());
 });
